@@ -1,6 +1,6 @@
 package com.quantumbot.quantumkawaiidiscordbot.listeners;
 
-import com.quantumbot.quantumkawaiidiscordbot.listeners.executors.EventExecutor;
+import com.quantumbot.quantumkawaiidiscordbot.service.executors.EventExecutor;
 import jakarta.validation.constraints.NotNull;
 import net.dv8tion.jda.api.events.GenericEvent;
 import net.dv8tion.jda.api.hooks.EventListener;

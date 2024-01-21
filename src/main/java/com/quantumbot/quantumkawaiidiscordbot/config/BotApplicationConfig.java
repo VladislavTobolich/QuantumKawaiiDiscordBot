@@ -1,6 +1,10 @@
 package com.quantumbot.quantumkawaiidiscordbot.config;
 
 
+import com.quantumbot.quantumkawaiidiscordbot.botcommands.buttonsevents.ButtonEvent;
+import com.quantumbot.quantumkawaiidiscordbot.botcommands.buttonsevents.NextButtonEvent;
+import com.quantumbot.quantumkawaiidiscordbot.botcommands.buttonsevents.PrevButtonEvent;
+import com.quantumbot.quantumkawaiidiscordbot.botcommands.buttonsevents.buttonstype.DiscordButton;
 import com.quantumbot.quantumkawaiidiscordbot.botcommands.slashcommands.InfoSlashCommand;
 import com.quantumbot.quantumkawaiidiscordbot.botcommands.slashcommands.SiGameSlashCommand;
 import com.quantumbot.quantumkawaiidiscordbot.botcommands.slashcommands.SlashCommand;
@@ -9,10 +13,10 @@ import com.quantumbot.quantumkawaiidiscordbot.botcommands.tildacommands.HelloTil
 import com.quantumbot.quantumkawaiidiscordbot.botcommands.tildacommands.TildaCommand;
 import com.quantumbot.quantumkawaiidiscordbot.botcommands.tildacommands.TildaCommandsDescription;
 import com.quantumbot.quantumkawaiidiscordbot.listeners.DiscordEventListener;
-import com.quantumbot.quantumkawaiidiscordbot.listeners.executors.EventExecutor;
-import com.quantumbot.quantumkawaiidiscordbot.listeners.executors.OnButtonEventExecute;
-import com.quantumbot.quantumkawaiidiscordbot.listeners.executors.OnMessageListenerExecute;
-import com.quantumbot.quantumkawaiidiscordbot.listeners.executors.OnSlashCommandInteractionExecutor;
+import com.quantumbot.quantumkawaiidiscordbot.service.executors.EventExecutor;
+import com.quantumbot.quantumkawaiidiscordbot.service.executors.OnButtonEventExecute;
+import com.quantumbot.quantumkawaiidiscordbot.service.executors.OnMessageListenerExecute;
+import com.quantumbot.quantumkawaiidiscordbot.service.executors.OnSlashCommandInteractionExecutor;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.events.GenericEvent;
@@ -66,6 +70,14 @@ public class BotApplicationConfig {
         Map<String, TildaCommand> tildaCommandMap = new HashMap<>(TildaCommandsDescription.values().length);
         tildaCommandMap.put(TildaCommandsDescription.HELLO.getCommandName(), helloTildaCommand);
         return tildaCommandMap;
+    }
+
+    @Bean
+    public Map<String, ButtonEvent> buttonEventMap(NextButtonEvent nextButtonEvent, PrevButtonEvent prevButtonEvent){
+        Map<String, ButtonEvent> buttonEventMap = new HashMap<>(DiscordButton.values().length);
+        buttonEventMap.put(DiscordButton.NEXT.getButtonId(), nextButtonEvent);
+        buttonEventMap.put(DiscordButton.PREV.getButtonId(), prevButtonEvent);
+        return buttonEventMap;
     }
 
 

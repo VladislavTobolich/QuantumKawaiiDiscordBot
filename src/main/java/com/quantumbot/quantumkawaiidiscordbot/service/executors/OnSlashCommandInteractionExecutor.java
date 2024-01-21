@@ -1,4 +1,4 @@
-package com.quantumbot.quantumkawaiidiscordbot.listeners.executors;
+package com.quantumbot.quantumkawaiidiscordbot.service.executors;
 
 import com.quantumbot.quantumkawaiidiscordbot.botcommands.slashcommands.SlashCommand;
 import jakarta.validation.constraints.NotNull;
@@ -7,10 +7,11 @@ import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEve
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Map;
 
-@Component
+@Service
 public class OnSlashCommandInteractionExecutor implements EventExecutor{
     private final Map<String, SlashCommand> slashCommandMap;
 
